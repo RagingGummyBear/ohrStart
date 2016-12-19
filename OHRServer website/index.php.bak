@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+        function myAjax() {
+        $.ajax({
+             type: "POST",
+             url: './src/dummyTestPhp/phpDummyTest.php',
+             data:{action:'call_this'},
+             success:function(html) {
+                 
+               var received_msg = JSON.parse(html);
+                 
+                  if(received_msg.command == "dummyHotelsRequest"){
+                  
+                  for(var hotel in received_msg.content){
+                      
+                      hotel = received_msg.content[hotel];
+
+                      alert("Recieved hotel with" 
+                            + "\nName : " + hotel.hotelName
+                            + "\nDescription : " + hotel.hotelDescription
+                            + "\nAddress : " + hotel.hotelAddress
+                            + "\nWith rating : " + hotel.hotelNumberOfStars
+                                   );
+                      
+                  }
+                  
+                 
+                  }
+                  else 
+                  {
+                      alert(received_msg['command']);
+                
+                  }
+             }
+
+        });
+         }
+
+        </script>
+        
+        <button id = "makeItWork" onclick="myAjax()" >make it work bby</button>
+        
+        
+    </body>
+</html>

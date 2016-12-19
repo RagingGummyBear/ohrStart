@@ -1,20 +1,14 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 require('../../vendor/autoload.php');
   use WebSocket\Client;
-  
+   
   session_start();
-  if(!isset($_SESSION['connected']))
+  print_r($_POST) . "HI";
+  /*if(!isset($_SESSION['connected']))
   {
-      $client = new Client("ws://127.0.0.1:25565");
+      */$client = new Client("ws://127.0.0.1:25565");
       $_SESSION['userIsConnected'] = $client;
-  }
+  //}
   
  // print_r($_GET) . "HI";
 
@@ -22,8 +16,8 @@ require('../../vendor/autoload.php');
      //$client = $_SESSION['userIsConnected'];
 //  echo $_POST['action']+'HI';
      
-     if($_POST['action'] == 'registerAUser') {
-
+        if($_POST['action'] == 'registerAUser') {
+           
       if($_POST['username'] && $_POST['password'] && $_POST['role']){
           
         $client->send('{"command":"registerUser","content":[' . $_POST['username'] .','. $_POST['password'] .',' . $_POST['role'] .']}');
@@ -34,11 +28,11 @@ require('../../vendor/autoload.php');
     }
     
     if($_POST['action'] == 'loginUser') {
-
+         
       if($_POST['username'] && $_POST['password']){
-          
+          echo $_POST['username'] . $_POST['password'];
         $client->send('{"command":"loginUser","content":[' . $_POST['username'] .','. $_POST['password'] . ']}');
-
+            echo 'Hi';
         echo $client->receive(); 
       }
       // call removeday() here

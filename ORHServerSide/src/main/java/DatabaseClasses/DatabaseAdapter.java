@@ -35,7 +35,7 @@ public class DatabaseAdapter {
 
 
     public ArrayList<JSONObject> getAllElementsFromTableWithConditionsAndSorted(String tableName, String[] orderByFields,HashMap<String,String> conditions ){
-        ArrayList<JSONObject> list = new ArrayList<>();
+        ArrayList<JSONObject> list = new ArrayList();
 
 
         //preparing the query with all of the necessary parameters
@@ -500,17 +500,14 @@ public class DatabaseAdapter {
 
     private MysqlDataSource getDataSource()
     {
-
         MysqlDataSource mysqlDS = null;
         mysqlDS = new MysqlDataSource();
-        mysqlDS.setURL("jdbc:mysql://localhost:3306/orhdatabase");
-        mysqlDS.setUser("IamHi");
-        mysqlDS.setPassword("darko11");
+        mysqlDS.setURL("jdbc:mysql://localhost:3306/ohrdatabase");
+        mysqlDS.setUser("root");
+        mysqlDS.setPassword("mico");
         mysqlDS.setAutoReconnect(true);
         // mysqlDS.setMaxReconnects(100);
         return mysqlDS;
-
-
     }
 
 

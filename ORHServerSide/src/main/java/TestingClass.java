@@ -16,7 +16,7 @@ public class TestingClass {
 
 
         //"TVChannelName":"HBO3"
-        HashMap<String,String> conditions = new HashMap<>();
+        HashMap<String,String> conditions = new HashMap();
         //conditions.put("TVChannelName","HBO3");
         //conditions.put("MoviePlot","N/A");
         String []sortBy = new String[1];

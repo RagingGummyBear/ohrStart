@@ -1,0 +1,21 @@
+{
+  "name": "bower",
+  "description": "primer",
+  "main": "yes",
+  "keywords": [
+    "y"
+  ],
+  "authors": [
+    "m1ch0"
+  ],
+  "license": "y",
+  "homepage": "y",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-0": {
+            "MyApp": "src"
+        }
+    },
+    "require": {
+        "cboden/ratchet": "0.3.*"
+    },
+	"require": {
+	"textalk/websocket": "1.0.*"
+	}
+	
+	
+}

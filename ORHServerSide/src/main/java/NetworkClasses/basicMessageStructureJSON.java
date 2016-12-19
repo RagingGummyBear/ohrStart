@@ -9,7 +9,7 @@ public class basicMessageStructureJSON{
 
     String command = "";
     String userUniqueID = "";
-    ArrayList<String> content = new ArrayList<>();  //JSONArray
+    ArrayList<String> content = new ArrayList();  //JSONArray
 
 
 }

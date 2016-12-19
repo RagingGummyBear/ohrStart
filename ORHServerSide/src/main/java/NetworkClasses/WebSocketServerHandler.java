@@ -21,7 +21,7 @@ import java.util.HashMap;
  */
 public class WebSocketServerHandler extends WebSocketServer {
 
-    HashMap<String,WebSocket> currentConnections = new HashMap<>(); //probably not needed
+    HashMap<String,WebSocket> currentConnections = new HashMap(); //probably not needed
     private final DatabaseAdapter databaseAdapter = new DatabaseAdapter();
 
     public WebSocketServerHandler(InetSocketAddress address) {
@@ -98,7 +98,7 @@ public class WebSocketServerHandler extends WebSocketServer {
         user.password = (String) content.get(1);
         user.role = (String) content.get(2);
 
-        HashMap<String,String> hashMap = new HashMap<>();
+        HashMap<String,String> hashMap = new HashMap();
         hashMap.put("username",user.username);
         if(databaseAdapter.getAllElementsFromTableWithConditionsAndSorted("users",null,hashMap).size() > 0){
 
@@ -118,7 +118,7 @@ public class WebSocketServerHandler extends WebSocketServer {
 
     private void tryToLogInUser(JSONObject msg, WebSocket conn) {
 
-
+        System.out.println("Tuka vleze");
         JSONArray content = msg.getJSONArray("content");
 
         BasicUser user = new BasicUser();
@@ -165,7 +165,7 @@ public class WebSocketServerHandler extends WebSocketServer {
     private void sendInvalidMessageResponse(WebSocket conn, Object command) {
         //"invalidMessageResponse"
         //"Invalid command received " + command
-        ArrayList<String> content = new ArrayList<>();
+        ArrayList<String> content = new ArrayList();
         content.add("Invalid command received : " + command);
         conn.send(constructJSONMessage("invalidMessageResponse",content).toString());
     }
@@ -173,7 +173,7 @@ public class WebSocketServerHandler extends WebSocketServer {
 
     private void sendDummyHotelList(WebSocket conn){
 
-        ArrayList<JSONObject> hotels = new ArrayList<>();
+        ArrayList<JSONObject> hotels = new ArrayList();
 
         JSONObject hotel = new JSONObject();
 
@@ -211,7 +211,7 @@ public class WebSocketServerHandler extends WebSocketServer {
     private void sendAllHotelsFromLocation(WebSocket conn,String location){
 
         // TODO: 19.11.2016 change ArrayList<Object> and implement a toString(), which will return json;
-        ArrayList<Object> hotels = new ArrayList<>();
+        ArrayList<Object> hotels = new ArrayList();
         
         hotels.stream().forEach(elem->{conn.send(elem.toString());});
         
